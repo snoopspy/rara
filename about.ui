@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>About</class>
+ <widget class="QDialog" name="About">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>492</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QLabel" name="lblImg">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>80</y>
+     <width>256</width>
+     <height>256</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="rara.qrc">:/img/img/r.png</pixmap>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblCrazyHacker">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>400</y>
+     <width>79</width>
+     <height>18</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>&lt;a href=&quot;https://crazyhacker.tistory.com/&quot;&gt;crazkhacker&lt;/a&gt;</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblGilgil">
+   <property name="geometry">
+    <rect>
+     <x>225</x>
+     <y>400</y>
+     <width>34</width>
+     <height>18</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>&lt;a href=&quot;https://gilgil.gitlab.io/&quot;&gt;gilgil&lt;/a&gt;</string>
+   </property>
+  </widget>
+ </widget>
+ <resources>
+  <include location="rara.qrc"/>
+ </resources>
+ <connections/>
+</ui>
