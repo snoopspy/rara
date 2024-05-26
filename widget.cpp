@@ -13,6 +13,8 @@ Widget::Widget(QWidget *parent)
 	, ui(new Ui::Widget) {
 	ui->setupUi(this);
 
+	setWindowTitle("R.A.R.A");
+
 	ui->tableWidget->setColumnCount(ColumnCount);
 	ui->tableWidget->setHorizontalHeaderItem(ColumnPackage, new QTableWidgetItem("Package"));
 	ui->tableWidget->setHorizontalHeaderItem(ColumnCheck, new QTableWidgetItem(""));
@@ -28,7 +30,7 @@ Widget::~Widget() {
 
 void Widget::loadPackageList() {
 	static const int BufSize = 8192;
-	QString runAppFileName("runapp.list");
+	QString runAppFileName("root_app.list");
 	QSet<QString> runApps;
 	FILE* fp = fopen(qPrintable(runAppFileName), "rt");
 	if (fp != nullptr) {

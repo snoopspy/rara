@@ -7,6 +7,8 @@ About::About(QWidget *parent)
 {
 	ui->setupUi(this);
 
+	setWindowTitle("R.A.R.A");
+
 	ui->lblCrazyHacker->setTextFormat(Qt::RichText);
 	ui->lblCrazyHacker->setTextInteractionFlags(Qt::TextBrowserInteraction);
 	ui->lblCrazyHacker->setOpenExternalLinks(true);
