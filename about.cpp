@@ -3,8 +3,7 @@
 
 About::About(QWidget *parent)
 	: QDialog(parent)
-	, ui(new Ui::About)
-{
+	, ui(new Ui::About) {
 	ui->setupUi(this);
 
 	setWindowTitle("R.A.R.A");
@@ -18,7 +17,11 @@ About::About(QWidget *parent)
 	ui->lblGilgil->setOpenExternalLinks(true);
 }
 
-About::~About()
-{
+About::~About() {
 	delete ui;
 }
+
+void About::on_pbOk_clicked() {
+	close();
+}
+

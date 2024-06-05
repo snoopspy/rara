@@ -6,7 +6,7 @@ DESTDIR = $$PWD/bin
 SOURCES += \
     about.cpp \
     gtrace.cpp \
-    main.cpp \
+    rara.cpp \
     widget.cpp
 
 HEADERS += \

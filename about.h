@@ -17,6 +17,8 @@ public:
 
 private slots:
 
+	void on_pbOk_clicked();
+
 private:
 	Ui::About *ui;
 };
