@@ -5,12 +5,14 @@ DESTDIR = $$PWD/bin
 
 SOURCES += \
     about.cpp \
+    architect.cpp \
     gtrace.cpp \
     rara.cpp \
     widget.cpp
 
 HEADERS += \
     about.h \
+    architect.h \
     gtrace.h \
     widget.h
 

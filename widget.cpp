@@ -6,6 +6,7 @@
 
 #include <QMessageBox>
 
+#include "architect.h"
 #include "gtrace.h"
 
 Widget::Widget(QWidget *parent)
@@ -93,7 +94,8 @@ void Widget::on_tbFilter_clicked() {
 }
 
 void Widget::on_pbUpdate_clicked() {
-	GTRACE("");
+	Architect::Type type = Architect::getType();
+	GTRACE("%d", (int)type);
 }
 
 void Widget::on_pbLoad_clicked() {
