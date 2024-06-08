@@ -8,16 +8,19 @@ SOURCES += \
     architect.cpp \
     gtrace.cpp \
     rara.cpp \
+    update.cpp \
     widget.cpp
 
 HEADERS += \
     about.h \
     architect.h \
     gtrace.h \
+    update.h \
     widget.h
 
 FORMS += \
     about.ui \
+    update.ui \
     widget.ui
 
 contains(ANDROID_TARGET_ARCH,armeabi-v7a) {

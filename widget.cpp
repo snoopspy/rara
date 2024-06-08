@@ -6,8 +6,8 @@
 
 #include <QMessageBox>
 
-#include "architect.h"
 #include "gtrace.h"
+#include "update.h"
 
 Widget::Widget(QWidget *parent)
 	: QWidget(parent)
@@ -94,8 +94,13 @@ void Widget::on_tbFilter_clicked() {
 }
 
 void Widget::on_pbUpdate_clicked() {
-	Architect::Type type = Architect::getType();
-	GTRACE("%d", (int)type);
+	Update update;
+#ifdef Q_OS_ANDROID
+	update.showMaximized();
+#else
+	update.show();
+#endif // Q_OS_ANDROID
+	update.exec();
 }
 
 void Widget::on_pbLoad_clicked() {

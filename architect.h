@@ -1,5 +1,7 @@
 #pragma once
 
+#include <QString>
+
 struct Architect {
 	enum Type {
 		TypeNone,
@@ -7,4 +9,5 @@ struct Architect {
 		Type32
 	};
 	static Type getType();
+	static QString getFileName(Type type);
 };
