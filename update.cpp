@@ -5,7 +5,6 @@
 #include <QMessageBox>
 
 #include "process.h"
-
 #include "architect.h"
 #include "gtrace.h"
 

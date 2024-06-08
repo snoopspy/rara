@@ -4,20 +4,14 @@
 #include <QWidget>
 #include <QList>
 
+#include "packages.h"
+
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class Widget;
 }
 QT_END_NAMESPACE
 
-struct Package {
-	Package(QString name, bool checked = false) : name_(name), checked_(checked) {}
-	QString name_;
-	bool checked_;
-};
-
-struct PackageList : QList<Package> {
-};
 
 class Widget : public QWidget
 {
@@ -27,14 +21,15 @@ public:
 	Widget(QWidget *parent = nullptr);
 	~Widget();
 
-	PackageList packageList_;
-	void loadPackageList();
-	void showPackageList(QString filter = "");
+	Packages packages_;
+	void showPackages(QString filter = "");
+
+protected:
+	void closeEvent(QCloseEvent*)	override { packages_.save(); }
 
 public:
 	const static int ColumnPackage = 0;
-	const static int ColumnCheck = 1;
-	const static int ColumnCount = 2;
+	const static int ColumnCount = 1;
 
 private slots:
 

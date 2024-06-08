@@ -1,9 +1,14 @@
 #include "widget.h"
 #include "about.h"
 #include <QApplication>
+#include "gtrace.h"
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
+	gtrace_default("127.0.0.1", 8908, true, "rara.log");
+	gtrace("rara %s",
+#include "version.txt"
+	);
+
 	QApplication a(argc, argv);
 
 	About about;

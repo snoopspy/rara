@@ -6,7 +6,9 @@ DESTDIR = $$PWD/bin
 SOURCES += \
     about.cpp \
     architect.cpp \
+    gcheckbox.cpp \
     gtrace.cpp \
+    packages.cpp \
     process.cpp \
     rara.cpp \
     update.cpp \
@@ -15,7 +17,9 @@ SOURCES += \
 HEADERS += \
     about.h \
     architect.h \
+    gcheckbox.h \
     gtrace.h \
+    packages.h \
     process.h \
     update.h \
     widget.h
