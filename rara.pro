@@ -7,6 +7,7 @@ SOURCES += \
     about.cpp \
     architect.cpp \
     gtrace.cpp \
+    process.cpp \
     rara.cpp \
     update.cpp \
     widget.cpp
@@ -15,6 +16,7 @@ HEADERS += \
     about.h \
     architect.h \
     gtrace.h \
+    process.h \
     update.h \
     widget.h
 
