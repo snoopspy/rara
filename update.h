@@ -16,8 +16,12 @@ public:
 	explicit Update(QWidget *parent = nullptr);
 	~Update();
 
-	QTimer timer_;
+	QString zipFileName_;
+	QTimer tmDownload_{this};
+	QTimer tmExtract_{this};
+
 	void download();
+	void extract();
 
 private slots:
 	void on_pbOk_clicked();

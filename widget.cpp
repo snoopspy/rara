@@ -94,7 +94,7 @@ void Widget::on_tbFilter_clicked() {
 }
 
 void Widget::on_pbUpdate_clicked() {
-	Update update;
+	Update update(this);
 #ifdef Q_OS_ANDROID
 	update.showMaximized();
 #else
