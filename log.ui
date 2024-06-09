@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Update</class>
- <widget class="QDialog" name="Update">
+ <class>Log</class>
+ <widget class="QDialog" name="Log">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -17,7 +17,7 @@
    <item row="0" column="0">
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <widget class="QPlainTextEdit" name="pteMessage">
+      <widget class="QPlainTextEdit" name="pteLog">
        <property name="readOnly">
         <bool>true</bool>
        </property>

@@ -36,7 +36,9 @@ bool Packages::load() {
 	while (true) {
 		char buf[BufSize];
 		char packageName[BufSize];
+		memset(packageName, 0, BufSize);
 		char* res = std::fgets(buf, BufSize, fp);
+		GTRACE("%s", buf);
 		if (res == nullptr) break;
 		sscanf(buf, "%s", packageName);
 		QSet<QString>::iterator it = runApps.find(QString(packageName));

@@ -2,7 +2,7 @@
 #include "ui_widget.h"
 
 #include "gcheckbox.h"
-#include "update.h"
+#include "log.h"
 
 Widget::Widget(QWidget *parent)
 	: QWidget(parent)
@@ -57,21 +57,34 @@ void Widget::on_tbFilter_clicked() {
 }
 
 void Widget::on_pbUpdate_clicked() {
-	Update update(this);
+	Log log(this);
 #ifdef Q_OS_ANDROID
-	update.showMaximized();
+	log.showMaximized();
 #else
-	update.show();
+	log.show();
 #endif // Q_OS_ANDROID
-	update.exec();
+	log.update();
+	log.exec();
 }
 
 void Widget::on_pbLoad_clicked() {
-	GTRACE("");
-	packages_.save();
+	Log log(this);
+#ifdef Q_OS_ANDROID
+	log.showMaximized();
+#else
+	log.show();
+#endif // Q_OS_ANDROID
+	log.load();
+	log.exec();
 }
 
 void Widget::on_pbUnload_clicked() {
-	GTRACE("");
-	packages_.save();
+	Log log(this);
+#ifdef Q_OS_ANDROID
+	log.showMaximized();
+#else
+	log.show();
+#endif // Q_OS_ANDROID
+	log.unload();
+	log.exec();
 }

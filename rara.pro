@@ -8,10 +8,10 @@ SOURCES += \
     architect.cpp \
     gcheckbox.cpp \
     gtrace.cpp \
+    log.cpp \
     packages.cpp \
     process.cpp \
     rara.cpp \
-    update.cpp \
     widget.cpp
 
 HEADERS += \
@@ -19,14 +19,14 @@ HEADERS += \
     architect.h \
     gcheckbox.h \
     gtrace.h \
+    log.h \
     packages.h \
     process.h \
-    update.h \
     widget.h
 
 FORMS += \
     about.ui \
-    update.ui \
+    log.ui \
     widget.ui
 
 contains(ANDROID_TARGET_ARCH,armeabi-v7a) {
