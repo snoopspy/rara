@@ -7,6 +7,7 @@
 #include "architect.h"
 #include "process.h"
 #include "gtrace.h"
+#include "zygote.h"
 
 Log::Log(QWidget *parent)
 	: QDialog(parent)
@@ -107,6 +108,13 @@ void Log::unload() {
 	runProcess("sleep", {"1"});
 
 #ifdef Q_OS_ANDROID
+	int pid;
+	Zygote::State state = Zygote::getState(&pid);
+	if (state == Zygote::Hooked && pid != 0) {
+		QString command = QString("su -c 'kill %1'").arg(pid);
+		GTRACE("command=%s", qPrintable(command));
+		runProcess(command, {}, ui->pteLog);
+	}
 #endif // Q_OS_ANDROID
 
 	ui->pbOk->setEnabled(true);

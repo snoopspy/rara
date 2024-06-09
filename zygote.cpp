@@ -6,6 +6,8 @@
 #include "gtrace.h"
 
 Zygote::State Zygote::getState(int* pid) {
+	if (pid != nullptr) *pid = 0;
+
 	FILE* fp = popen("su -c ps", "r");
 	if (fp == nullptr) {
 		GTRACE("popen return null");
@@ -60,13 +62,13 @@ Zygote::State Zygote::getState(int* pid) {
 	State state = Unhooked;
 	while (true) {
 		char buf[BufSize];
-		char*  res = fgets(buf, BufSize, fp);
+		char* res = fgets(buf, BufSize, fp);
 		if (res == nullptr) {
 			GTRACE("fgets return null");
 			break;
 		}
+		GTRACE("%s", buf);
 		if (strstr(buf, "libhook") != nullptr) {
-			GTRACE("%s", buf);
 			state = Hooked;
 			break;
 		}

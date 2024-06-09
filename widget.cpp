@@ -1,6 +1,7 @@
 #include "widget.h"
 #include "ui_widget.h"
 
+#include <QFile>
 #include "gcheckbox.h"
 #include "log.h"
 
@@ -28,11 +29,13 @@ Widget::~Widget() {
 }
 
 void Widget::setControl() {
-	int pid;
-	Zygote::State state = Zygote::getState(&pid);
+	bool injectorExists = QFile::exists("injector");
+	Zygote::State state = Zygote::getState();
+	GTRACE("exist=%d state=%d", int(injectorExists), int(state));
+
 	ui->pbUpdate->setEnabled(true);
-	ui->pbLoad->setEnabled(state == Zygote::Unhooked);
-	ui->pbUnload->setEnabled(state == Zygote::Hooked);
+	ui->pbLoad->setEnabled(injectorExists && state == Zygote::Unhooked);
+	ui->pbUnload->setEnabled(state != Zygote::Hooked);
 }
 
 void Widget::showPackages(QString filter) {
