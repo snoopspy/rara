@@ -5,6 +5,7 @@
 #include <QList>
 
 #include "packages.h"
+#include "zygote.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -20,6 +21,8 @@ class Widget : public QWidget
 public:
 	Widget(QWidget *parent = nullptr);
 	~Widget();
+
+	void setControl();
 
 	Packages packages_;
 	void showPackages(QString filter = "");

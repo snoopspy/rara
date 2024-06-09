@@ -12,7 +12,8 @@ SOURCES += \
     packages.cpp \
     process.cpp \
     rara.cpp \
-    widget.cpp
+    widget.cpp \
+    zygote.cpp
 
 HEADERS += \
     about.h \
@@ -22,7 +23,8 @@ HEADERS += \
     log.h \
     packages.h \
     process.h \
-    widget.h
+    widget.h \
+    zygote.h
 
 FORMS += \
     about.ui \

@@ -4,8 +4,8 @@
 #include <QDir>
 #include <QMessageBox>
 
-#include "process.h"
 #include "architect.h"
+#include "process.h"
 #include "gtrace.h"
 
 Log::Log(QWidget *parent)

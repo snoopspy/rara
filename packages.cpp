@@ -1,6 +1,8 @@
 #include "packages.h"
 #include <QMessageBox>
 
+#include "zygote.h"
+
 bool Packages::load() {
 	static const int BufSize = 8192;
 	QSet<QString> runApps;
@@ -29,6 +31,7 @@ bool Packages::load() {
 		QMessageBox mb;
 		QString msg = QString("Can not open %1 %2").arg(packageListCommand).arg(QString(strerror(errno)));
 		mb.warning(nullptr, "Error", msg);
+		pclose(fp);
 		return false;
 	}
 
@@ -38,7 +41,7 @@ bool Packages::load() {
 		char packageName[BufSize];
 		memset(packageName, 0, BufSize);
 		char* res = std::fgets(buf, BufSize, fp);
-		GTRACE("%s", buf);
+		// GTRACE("%s", buf); // gilgil temp 2024.06.09
 		if (res == nullptr) break;
 		sscanf(buf, "%s", packageName);
 		QSet<QString>::iterator it = runApps.find(QString(packageName));
@@ -50,6 +53,9 @@ bool Packages::load() {
 }
 
 bool Packages::save() {
+	Zygote::State state = Zygote::getState();
+	if (state != Zygote::Unhooked) return true;
+
 	QString command = QString("rm -f %1").arg(rootAppFileName);
 	system(qPrintable(command));
 

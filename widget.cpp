@@ -18,10 +18,21 @@ Widget::Widget(QWidget *parent)
 
 	packages_.load();
 	showPackages("");
+
+	setControl();
 }
 
 Widget::~Widget() {
+	GTRACE("");
 	delete ui;
+}
+
+void Widget::setControl() {
+	int pid;
+	Zygote::State state = Zygote::getState(&pid);
+	ui->pbUpdate->setEnabled(true);
+	ui->pbLoad->setEnabled(state == Zygote::Unhooked);
+	ui->pbUnload->setEnabled(state == Zygote::Hooked);
 }
 
 void Widget::showPackages(QString filter) {
@@ -65,6 +76,7 @@ void Widget::on_pbUpdate_clicked() {
 #endif // Q_OS_ANDROID
 	log.update();
 	log.exec();
+	setControl();
 }
 
 void Widget::on_pbLoad_clicked() {
@@ -76,6 +88,7 @@ void Widget::on_pbLoad_clicked() {
 #endif // Q_OS_ANDROID
 	log.load();
 	log.exec();
+	setControl();
 }
 
 void Widget::on_pbUnload_clicked() {
@@ -87,4 +100,5 @@ void Widget::on_pbUnload_clicked() {
 #endif // Q_OS_ANDROID
 	log.unload();
 	log.exec();
+	setControl();
 }

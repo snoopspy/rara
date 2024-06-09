@@ -19,7 +19,10 @@ int main(int argc, char *argv[]) {
 #endif // Q_OS_ANDROID
 	about.exec();
 
-	Widget w;
-	w.show();
-	return a.exec();
+	Widget* w = new Widget;
+	w->show();
+	int res = a.exec();
+	delete w;
+	GTRACE("rara terminated successfully");
+	return res;
 }
