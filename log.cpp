@@ -57,9 +57,9 @@ void Log::update() {
 	}
 
 	{
-		runProcess("chmod", {"+x", "injector"}, ui->pteLog);
-		runProcess("chmod", {"+x", "libhookzygote.so"}, ui->pteLog);
-		runProcess("chmod", {"+x", "libhookzygote32.so"}, ui->pteLog);
+		runProcess("chmod", {"766", "injector"}, ui->pteLog);
+		runProcess("chmod", {"644", "libhookzygote.so"}, ui->pteLog);
+		runProcess("chmod", {"644", "libhookzygote32.so"}, ui->pteLog);
 	}
 
 #ifdef Q_OS_ANDROID
