@@ -53,9 +53,10 @@ bool Packages::load() {
 }
 
 bool Packages::save() {
-	if (count() == 0) { // if fail to get package list
+	if (count() == 0) { // if failed to get package list
 		return false;
 	}
+	GTRACE("");
 	QString command = QString("rm -f %1").arg(rootAppFileName);
 	system(qPrintable(command));
 

@@ -25,6 +25,7 @@ Widget::Widget(QWidget *parent)
 
 Widget::~Widget() {
 	GTRACE("");
+	packages_.save();
 	delete ui;
 }
 
@@ -83,6 +84,7 @@ void Widget::on_pbUpdate_clicked() {
 }
 
 void Widget::on_pbLoad_clicked() {
+	packages_.save();
 	Log log(this);
 #ifdef Q_OS_ANDROID
 	log.showMaximized();
@@ -95,6 +97,7 @@ void Widget::on_pbLoad_clicked() {
 }
 
 void Widget::on_pbUnload_clicked() {
+	packages_.save();
 	Log log(this);
 #ifdef Q_OS_ANDROID
 	log.showMaximized();

@@ -27,9 +27,6 @@ public:
 	Packages packages_;
 	void showPackages(QString filter = "");
 
-protected:
-	void closeEvent(QCloseEvent*) override { packages_.save(); }
-
 public:
 	const static int ColumnPackage = 0;
 	const static int ColumnCount = 1;
