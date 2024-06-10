@@ -32,21 +32,27 @@ Widget::~Widget() {
 void Widget::setControl() {
 	bool injectorExists = QFile::exists("injector");
 	Zygote::State state = Zygote::getState();
-	GTRACE("exist=%d state=%d", int(injectorExists), int(state));
+	QString stateStr;
+	switch (state) {
+		case Zygote::Unknown: stateStr = "Unknown"; break;
+		case Zygote::Unhooked: stateStr = "Unhooked"; break;
+		case Zygote::Hooked: stateStr = "Hooked"; break;
+	}
+	GTRACE("exist=%s state=%s", injectorExists ? "true" : "fase", qPrintable(stateStr));
 
 	ui->pbUpdate->setEnabled(true);
 	ui->pbLoad->setEnabled(injectorExists && state == Zygote::Unhooked);
 	ui->pbUnload->setEnabled(state == Zygote::Hooked);
 }
 
-void Widget::showPackages(QString filter) {
+void Widget::showPackages(QString filter, bool showOnlySelected) {
 	filter = filter.trimmed();
 	ui->tableWidget->setRowCount(0);
 	for (Package package: packages_) {
 		if (filter != "" && package.name_.indexOf(filter) == -1) continue;
+		if (showOnlySelected && !package.checked_) continue;
 		int row = ui->tableWidget->rowCount();
 		ui->tableWidget->insertRow(row);
-		//ui->tableWidget->setItem(row, ColumnPackage, new QTableWidgetItem(QString(package.name_)));
 		GCheckBox* checkBox = new GCheckBox(ui->tableWidget);
 		checkBox->setProperty("packageName", package.name_);
 
@@ -106,5 +112,10 @@ void Widget::on_pbUnload_clicked() {
 #endif // Q_OS_ANDROID
 	log.unload();
 	log.exec();
+	setControl();
+}
+
+void Widget::on_chkShowOnlySelected_clicked() {
+	showPackages(ui->leFilter->text(), ui->chkShowOnlySelected->isChecked());
 	setControl();
 }

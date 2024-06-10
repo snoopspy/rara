@@ -25,7 +25,7 @@ public:
 	void setControl();
 
 	Packages packages_;
-	void showPackages(QString filter = "");
+	void showPackages(QString filter = "", bool showOnlySelected = false);
 
 public:
 	const static int ColumnPackage = 0;
@@ -42,6 +42,8 @@ private slots:
 	void on_pbLoad_clicked();
 
 	void on_pbUnload_clicked();
+
+	void on_chkShowOnlySelected_clicked();
 
 private:
 	Ui::Widget *ui;

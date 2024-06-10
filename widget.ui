@@ -19,6 +19,13 @@
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
+        <widget class="GCheckBox" name="chkShowOnlySelected">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QLineEdit" name="leFilter"/>
        </item>
        <item>
@@ -67,6 +74,11 @@
    <class>GTableWidget</class>
    <extends>QTableWidget</extends>
    <header>gtablewidget.h</header>
+  </customwidget>
+  <customwidget>
+   <class>GCheckBox</class>
+   <extends>QCheckBox</extends>
+   <header>gcheckbox.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>
