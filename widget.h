@@ -25,7 +25,7 @@ public:
 	void setControl();
 
 	Packages packages_;
-	void showPackages(QString filter = "", bool showOnlySelected = false);
+	void showPackages(QString filter, bool showOnlySelected);
 
 public:
 	const static int ColumnPackage = 0;

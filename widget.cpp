@@ -18,7 +18,7 @@ Widget::Widget(QWidget *parent)
 	ui->tableWidget->horizontalHeader()->setSectionResizeMode(ColumnPackage, QHeaderView::Stretch);
 
 	packages_.load();
-	showPackages("");
+	showPackages("", false);
 
 	setControl();
 }
@@ -74,7 +74,7 @@ void Widget::on_leFilter_returnPressed() {
 }
 
 void Widget::on_tbFilter_clicked() {
-	showPackages(ui->leFilter->text());
+	showPackages(ui->leFilter->text(), ui->chkShowOnlySelected->isChecked());
 }
 
 void Widget::on_pbUpdate_clicked() {
