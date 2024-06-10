@@ -15,7 +15,7 @@ Zygote::State Zygote::getState(int* pid) {
 	}
 
 	static const int BufSize = 8192;
-	int mypid;
+	int mypid = 0;
 	while (true) {
 		char buf[BufSize];
 		char* res = fgets(buf, BufSize, fp);
@@ -23,7 +23,7 @@ Zygote::State Zygote::getState(int* pid) {
 			GTRACE("fgets return null");
 			return Unknown;
 		}
-		GTRACE("%s", buf); // gilgil temp 2024.06.09
+		// GTRACE("%s", buf); // gilgil temp 2024.06.09
 
 		// USER PID   PPID VSIZE   RSS    CHAN       hexa       PC NAME
 		// root 10654 1    1627432 112816 poll_sched 0000000000 S  zygote
@@ -38,15 +38,18 @@ Zygote::State Zygote::getState(int* pid) {
 		char pc[BufSize];
 		char name[BufSize];
 		int res2 = sscanf(buf, "%s %d %d %d %d %s %s %s %s", user, &pid, &ppid, &vsize, &rss, chan, hexa, pc, name);
-		GTRACE("sscanf return %d", res2);
 		if (res2 != 9) continue;
 		if (strcmp(name, "zygote") == 0) {
+			GTRACE("%s", buf);
 			mypid = pid;
 			break;
 		}
 	}
 	pclose(fp);
-	GTRACE("pid=%d", mypid);
+	if (mypid == 0) {
+		GTRACE("pid is zero");
+		return Unknown;
+	}
 	if (pid != nullptr) *pid = mypid;
 
 	char command[BufSize];
@@ -67,8 +70,10 @@ Zygote::State Zygote::getState(int* pid) {
 			GTRACE("fgets return null");
 			break;
 		}
-		GTRACE("%s", buf);
+		int end	= strlen(buf) - 1;
+		if (buf[end] == '\n') buf[end] = '\0';
 		if (strstr(buf, "libhook") != nullptr) {
+			GTRACE("found hook '%s'", buf);
 			state = Hooked;
 			break;
 		}

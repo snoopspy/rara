@@ -111,9 +111,7 @@ void Log::unload() {
 	int pid;
 	Zygote::State state = Zygote::getState(&pid);
 	if (state == Zygote::Hooked && pid != 0) {
-		QString command = QString("su -c 'kill %1'").arg(pid);
-		GTRACE("command=%s", qPrintable(command));
-		runProcess(command, {}, ui->pteLog);
+		runProcess("su", {"-c", QString("kill %1").arg(pid)}, ui->pteLog);
 	}
 #endif // Q_OS_ANDROID
 

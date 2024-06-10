@@ -35,7 +35,7 @@ void Widget::setControl() {
 
 	ui->pbUpdate->setEnabled(true);
 	ui->pbLoad->setEnabled(injectorExists && state == Zygote::Unhooked);
-	ui->pbUnload->setEnabled(state != Zygote::Hooked);
+	ui->pbUnload->setEnabled(state == Zygote::Hooked);
 }
 
 void Widget::showPackages(QString filter) {

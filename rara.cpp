@@ -5,6 +5,7 @@
 
 int main(int argc, char *argv[]) {
 	gtrace_default("127.0.0.1", 8908, true, "rara.log");
+	gtrace("");
 	gtrace("rara %s",
 #include "version.txt"
 	);
