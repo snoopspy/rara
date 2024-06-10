@@ -31,7 +31,7 @@
       </layout>
      </item>
      <item>
-      <widget class="QTableWidget" name="tableWidget"/>
+      <widget class="GTableWidget" name="tableWidget"/>
      </item>
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout">
@@ -62,6 +62,13 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>GTableWidget</class>
+   <extends>QTableWidget</extends>
+   <header>gtablewidget.h</header>
+  </customwidget>
+ </customwidgets>
  <tabstops>
   <tabstop>leFilter</tabstop>
   <tabstop>tbFilter</tabstop>

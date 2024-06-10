@@ -7,6 +7,7 @@ SOURCES += \
     about.cpp \
     architect.cpp \
     gcheckbox.cpp \
+    gtablewidget.cpp \
     gtrace.cpp \
     log.cpp \
     packages.cpp \
@@ -19,6 +20,8 @@ HEADERS += \
     about.h \
     architect.h \
     gcheckbox.h \
+    gitemdelegate.h \
+    gtablewidget.h \
     gtrace.h \
     log.h \
     packages.h \
