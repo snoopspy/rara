@@ -57,7 +57,7 @@ void Log::update() {
 	}
 
 	{
-		runProcess("chmod", {"766", "injector"}, ui->pteLog);
+		runProcess("chmod", {"777", "injector"}, ui->pteLog);
 		runProcess("chmod", {"644", "libhookzygote.so"}, ui->pteLog);
 		runProcess("chmod", {"644", "libhookzygote32.so"}, ui->pteLog);
 	}
