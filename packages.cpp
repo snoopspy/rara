@@ -53,9 +53,9 @@ bool Packages::load() {
 }
 
 bool Packages::save() {
-	Zygote::State state = Zygote::getState();
-	if (state != Zygote::Unhooked) return true;
-
+	if (count() == 0) { // if fail to get package list
+		return false;
+	}
 	QString command = QString("rm -f %1").arg(rootAppFileName);
 	system(qPrintable(command));
 
