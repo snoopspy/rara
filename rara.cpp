@@ -1,7 +1,8 @@
-#include "widget.h"
-#include "about.h"
 #include <QApplication>
+#include "about.h"
 #include "gtrace.h"
+#include "option.h"
+#include "widget.h"
 
 int main(int argc, char *argv[]) {
 	gtrace_default("127.0.0.1", 8908, true, "rara.log");
@@ -12,13 +13,16 @@ int main(int argc, char *argv[]) {
 
 	QApplication a(argc, argv);
 
-	About about;
+	Option& option = Option::instance();
+	if (option.showDialog_) {
+		About about;
 #ifdef Q_OS_ANDROID
-	about.showMaximized();
+		about.showMaximized();
 #else
-	about.show();
+		about.show();
 #endif // Q_OS_ANDROID
-	about.exec();
+		about.exec();
+	}
 
 	Widget* w = new Widget;
 	w->show();

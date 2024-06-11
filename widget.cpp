@@ -4,6 +4,7 @@
 #include <QFile>
 #include "gcheckbox.h"
 #include "log.h"
+#include "option.h"
 
 Widget::Widget(QWidget *parent)
 	: QWidget(parent)
@@ -20,12 +21,21 @@ Widget::Widget(QWidget *parent)
 	packages_.load();
 	showPackages("", false);
 
+	Option& option = Option::instance();
+	ui->chkShowOnlySelected->setChecked(option.selected_);
+	ui->leFilter->setText(option.filter_.data());
+
 	setControl();
 }
 
 Widget::~Widget() {
 	GTRACE("");
 	packages_.save();
+
+	Option& option = Option::instance();
+	option.selected_ = ui->chkShowOnlySelected->isChecked();
+	option.filter_ = ui->leFilter->text().toStdString();
+
 	delete ui;
 }
 

@@ -1,5 +1,6 @@
 #include "about.h"
 #include "ui_about.h"
+#include "option.h"
 
 About::About(QWidget *parent)
 	: QDialog(parent)
@@ -15,9 +16,15 @@ About::About(QWidget *parent)
 	ui->lblGilgil->setTextFormat(Qt::RichText);
 	ui->lblGilgil->setTextInteractionFlags(Qt::TextBrowserInteraction);
 	ui->lblGilgil->setOpenExternalLinks(true);
+
+	Option& option = Option::instance();
+	ui->chkShowDialog->setChecked(option.showDialog_);
 }
 
 About::~About() {
+	Option& option = Option::instance();
+	option.showDialog_ = ui->chkShowDialog->isChecked();
+
 	delete ui;
 }
 

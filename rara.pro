@@ -10,6 +10,7 @@ SOURCES += \
     gtablewidget.cpp \
     gtrace.cpp \
     log.cpp \
+    option.cpp \
     packages.cpp \
     process.cpp \
     rara.cpp \
@@ -23,7 +24,9 @@ HEADERS += \
     gitemdelegate.h \
     gtablewidget.h \
     gtrace.h \
+    ini.h \
     log.h \
+    option.h \
     packages.h \
     process.h \
     widget.h \

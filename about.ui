@@ -15,7 +15,7 @@
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
-    <layout class="QVBoxLayout" name="vlMain">
+    <layout class="QVBoxLayout" name="verticalLayout">
      <item>
       <widget class="QLabel" name="lblImg">
        <property name="sizePolicy">
@@ -36,7 +36,7 @@
       </widget>
      </item>
      <item>
-      <layout class="QVBoxLayout" name="vlBottom">
+      <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
         <widget class="QLabel" name="lblCrazyHacker">
          <property name="text">
@@ -57,22 +57,36 @@
          </property>
         </widget>
        </item>
-       <item>
-        <widget class="QPushButton" name="pbOk">
-         <property name="text">
-          <string>Ok</string>
-         </property>
-         <property name="default">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
       </layout>
+     </item>
+     <item>
+      <widget class="GCheckBox" name="chkShowDialog">
+       <property name="text">
+        <string>Show this dialog at startup</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pbOk">
+       <property name="text">
+        <string>Ok</string>
+       </property>
+       <property name="default">
+        <bool>true</bool>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>GCheckBox</class>
+   <extends>QCheckBox</extends>
+   <header>gcheckbox.h</header>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="rara.qrc"/>
  </resources>
