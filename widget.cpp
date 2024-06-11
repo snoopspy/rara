@@ -18,12 +18,12 @@ Widget::Widget(QWidget *parent)
 	ui->tableWidget->setHorizontalHeaderItem(ColumnPackage, new QTableWidgetItem("Package"));
 	ui->tableWidget->horizontalHeader()->setSectionResizeMode(ColumnPackage, QHeaderView::Stretch);
 
-	packages_.load();
-	showPackages("", false);
-
 	Option& option = Option::instance();
 	ui->chkShowOnlySelected->setChecked(option.selected_);
 	ui->leFilter->setText(option.filter_.data());
+
+	packages_.load();
+	showPackages(ui->leFilter->text(), ui->chkShowOnlySelected->isChecked());
 
 	setControl();
 }
