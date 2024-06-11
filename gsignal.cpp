@@ -45,7 +45,6 @@ void GSignal::setup(int signo, Handler handler) {
 	if (handler == nullptr)
 		handler = _signalHandler;
 	Handler oldHandler = std::signal(signo, handler);
-	GTRACE("%p", oldHandler);
 	handlers_[signo] = oldHandler;
 }
 
