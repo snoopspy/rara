@@ -50,7 +50,7 @@ void Widget::setControl() {
 	}
 	GTRACE("exist=%s state=%s", injectorExists ? "true" : "fase", qPrintable(stateStr));
 
-	ui->pbUpdate->setEnabled(true);
+	ui->pbUpdate->setEnabled(state != Zygote::Hooked);
 	ui->pbLoad->setEnabled(injectorExists && state == Zygote::Unhooked);
 	ui->pbUnload->setEnabled(state == Zygote::Hooked);
 }
