@@ -5,7 +5,7 @@ DESTDIR = $$PWD/bin
 
 SOURCES += \
     about.cpp \
-    architect.cpp \
+    arch.cpp \
     gcheckbox.cpp \
     gsignal.cpp \
     gtablewidget.cpp \
@@ -20,7 +20,7 @@ SOURCES += \
 
 HEADERS += \
     about.h \
-    architect.h \
+    arch.h \
     gcheckbox.h \
     gitemdelegate.h \
     gsignal.h \

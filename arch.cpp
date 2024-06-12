@@ -1,9 +1,9 @@
-#include "architect.h"
+#include "arch.h"
 
 #include <QProcess>
 #include "gtrace.h"
 
-Architect::Type Architect::getType() {
+Arch::Type Arch::getType() {
 	QString program{"uname"};
 	QStringList arguments{"-m"};
 	QProcess process;
@@ -20,14 +20,14 @@ Architect::Type Architect::getType() {
 	return TypeNone;
 }
 
-QString Architect::getFileName(Type type) {
+QString Arch::getFileName(Type type) {
 	switch (type) {
 		case TypeNone:
 			GTRACE("type is TypeNone");
 			return QString();
-		case Architect::Type64:
+		case Type64:
 			return QString("Run-Application-as-Root-for-Android_linux_aarch64.zip");
-		case Architect::Type32:
+		case Type32:
 			return QString("Run-Application-as-Root-for-Android_linux_armv7a.zip");
 	}
 }

@@ -2,7 +2,7 @@
 
 #include <QString>
 
-struct Architect {
+struct Arch {
 	enum Type {
 		TypeNone,
 		Type64,
