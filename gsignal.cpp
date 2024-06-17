@@ -1,5 +1,5 @@
 #include "gsignal.h"
-#include "gtrace.h"
+#include <QDebug>
 
 // ----------------------------------------------------------------------------
 // GSignal
@@ -20,7 +20,7 @@ void GSignal::signalHandler(int signo) {
 
 	Handlers::iterator it = handlers_.find(signo);
 	if (it == handlers_.end()) {
-		GTRACE("can not find signal %d", signo);
+		qCritical() << "can not find signal" << signo;
 		return;
 	}
 

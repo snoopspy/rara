@@ -1,5 +1,4 @@
 #include "arch.h"
-
 #include <QProcess>
 #include "gtrace.h"
 

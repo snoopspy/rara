@@ -1,6 +1,5 @@
 #include "widget.h"
 #include "ui_widget.h"
-
 #include <QFile>
 #include "gcheckbox.h"
 #include "log.h"

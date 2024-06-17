@@ -1,9 +1,11 @@
 #include "process.h"
-
 #include <QEventLoop>
+#include "gtrace.h"
 
 int Process::run(QString command, QStringList arguments, Output* output, QString input) {
-	if (output != nullptr) output->write("\n" + command + " " + arguments.join(' ') + "\n");
+	QString log = command + " " + arguments.join(' ');
+	GTRACE("%s", qPrintable(log));
+	if (output != nullptr) output->write("\n" + log + "\n");
 
 	QEventLoop looper;
 	QProcess* p = new QProcess(&looper);

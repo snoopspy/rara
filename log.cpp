@@ -66,7 +66,7 @@ void Log::update() {
 		}
 
 #ifdef Q_OS_ANDROID
-		if (!Process::run("su", {"-c", "mount -o rw,remount /system"}, &outputPte) != EXIT_SUCCESS) break;
+		if (Process::run("su", {"-c", "mount -o rw,remount /system"}, &outputPte) != EXIT_SUCCESS) break;
 
 		QString path = QDir::currentPath();
 		GTRACE("%s", qPrintable(path));

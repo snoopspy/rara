@@ -1,8 +1,6 @@
 #include "packages.h"
 #include <QMessageBox>
 
-#include "zygote.h"
-
 bool Packages::load() {
 	static const int BufSize = 8192;
 	QSet<QString> runApps;

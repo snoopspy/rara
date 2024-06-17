@@ -28,12 +28,16 @@ public slots:
 	}
 };
 
+const char* version() {
+	return
+#include "version.txt"
+	" Build(" __DATE__ " " __TIME__ ")";
+}
+
 int main(int argc, char *argv[]) {
 	gtrace_default("127.0.0.1", 8908, true, "rara.log");
 	gtrace("");
-	gtrace("rara %s",
-#include "version.txt"
-	);
+	gtrace("rara %s", version());
 
 	QApplication a(argc, argv);
 	Signal signal;

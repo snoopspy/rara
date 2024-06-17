@@ -1,8 +1,6 @@
 #include "zygote.h"
-
 #include <cstdio>
 #include <cstring>
-
 #include "gtrace.h"
 
 Zygote::State Zygote::getState(int* pid) {
